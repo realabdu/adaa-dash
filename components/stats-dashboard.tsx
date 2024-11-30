@@ -17,7 +17,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
 
 // Add this helper function at the top of the file, after the interfaces
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));

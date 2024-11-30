@@ -41,7 +41,7 @@ export function PassKeyAuth({ onAuth }: { onAuth: (isAuth: boolean) => void }) {
         
         onAuth(true);
         setError("");
-      } catch (err) {
+      } catch  {
         setError("Authentication failed. Please try again.");
       }
     } else {
