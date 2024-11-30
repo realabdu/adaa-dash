@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { PassKeyAuth } from "@/components/pass-key"
-import { StatsDashboard } from "@/components/stats-dashboard"
+import { PassKeyAuth } from "./auth/pass-key"
+import { StatsDashboard } from "./dashboard/stats-dashboard"
 
 export default function Page() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
