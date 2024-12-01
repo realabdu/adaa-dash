@@ -118,30 +118,30 @@ const STAGES = {
       "باكستان": { male: "c21b268c-872a-42d6-bf12-9c05d6e28303", female: "5194c92a-b6b0-4a4f-bd6b-5a53ebf600e5" },
       "مصر": { male: "1556137e-3059-4a84-a799-bbe29f6aca02", female: "b50d8173-66d0-4cab-88ad-cd91c30e7889" },
       "الهند": { male: "256e7af3-e708-40d7-ae11-d3ea9c9c60fa", female: "9fb6a71d-a200-4a57-aa35-e228eb277bc4" },
-      "أندونيسيا": { male: "99a0d083-345e-4f05-b985-f064d9a45e08", female: "108" },
-      "اليمن": { male: "109", female: "110" },
-      "العراق": { male: "111", female: "112" },
-      "بنجلاديش": { male: "113", female: "114" },
-      "السودان": { male: "115", female: "116" },
-      "الجزائر": { male: "117", female: "118" },
-      "تركيا": { male: "119", female: "120" }
+      "أندونيسيا": { male: "99a0d083-345e-4f05-b985-f064d9a45e08", female: "1a1bc3fc-5881-46a2-90e6-0165a6b11873" },
+      "اليمن": { male: "92375a22-c178-4c38-921e-1aa1bbcbf369", female: "58dad059-55a4-4340-9e98-1d638226bcb0" },
+      "العراق": { male: "e4edc443-5439-40e4-a452-deba7b87fe67", female: "e06b16a7-c7cb-4c38-bed3-c2174412c2ed" },
+      "بنجلاديش": { male: "1a77d087-f3d6-4a2c-9d7b-cbfec1bf989f", female: "c7e3ea44-9162-4a70-bea3-917bbfa402f8" },
+      "السودان": { male: "68911bda-7460-44d6-aec4-09ca03600b30", female: "3e694cca-472b-476d-ba3b-83d373fc65a7" },
+      "الجزائر": { male: "0739fac6-cfa6-45b0-9e71-bd36164026a4", female: "f961bf96-2bce-48cf-8ba1-ffa058b2abc6" },
+      "تركيا": { male: "68900240-8091-4ca5-a23d-8460a847e7a1", female: "2e4904ff-5416-48d0-a06d-ac287d47d026" }
     }
   },
   "مكة المكرمة - المغادرة": {
     id: "b2d83218-b55b-4ab3-bf7f-7fb183cbe502",
     default: "fbf9f2a8-c547-4930-ba79-8b624869803d",
     filters: {
-      "أوزبكستان": { male: "F7_1", female: "F7_2" },
-      "باكستان": { male: "101", female: "102" },
-      "مصر": { male: "103", female: "104" },
-      "الهند": { male: "105", female: "106" },
-      "أندونيسيا": { male: "107", female: "108" },
-      "اليمن": { male: "109", female: "110" },
-      "العراق": { male: "111", female: "112" },
-      "بنجلاديش": { male: "113", female: "114" },
-      "السودان": { male: "115", female: "116" },
-      "الجزائر": { male: "117", female: "118" },
-      "تركيا": { male: "119", female: "120" }
+      "أوزبكستان": { male: "fef3606d-eadc-41e3-bc46-34b7c6b5c463", female: "7e2f2b8e-021f-4649-b314-e5d2b0b00c5c" },
+      "باكستان": { male: "0b51a255-350e-4602-b3c7-337ecc93821e", female: "358af71e-ec0a-4b92-bf24-19a59c95fff2" },
+      "مصر": { male: "68bdff11-92ec-451a-af55-3fa757ed2202", female: "14ee1f35-3ef4-4738-8ee6-9c0980c44f6b" },
+      "الهند": { male: "208f7f94-16a0-4fb2-9568-d578b4dea892", female: "4044b37e-7590-4de6-bf92-59dd1e65121b" },
+      "أندونيسيا": { male: "52e8f40d-fa58-4090-844b-741279a1579b", female: "669c56b1-8123-441c-9990-17a7c4e855e4" },
+      "اليمن": { male: "70b832cb-ce0c-4c9d-a66e-3cc3ca6221e7", female: "a8348634-f4c7-4c39-8207-c8a032cf5b57" },
+      "العراق": { male: "d15ea941-c136-4e06-8021-f0207591ab04", female: "9dee7fed-71f9-49ac-862c-3a5756a0b295" },
+      "بنجلاديش": { male: "afbc11c1-8190-4d7a-84a5-709b52d8ce04", female: "bd5100b7-2d24-4ae5-aa44-0f48512f1556" },
+      "السودان": { male: "7765d23f-bc77-44cd-8e1e-7aaec7630386", female: "1db6253f-40da-4093-9245-7cbb9746b25b" },
+      "الجزائر": { male: "6c21b651-78ed-4601-8791-05447cd5031c", female: "6a072850-1f27-4a47-9fbb-aa5364bfb2e0" },
+      "تركيا": { male: "0839c893-0e7c-47bc-ab9f-c86a3c4b1afe", female: "e4c47cdf-9417-44f5-b67b-6dfd173db5d5" }
     }
   },
   "مكة المكرمة - السفر": {
