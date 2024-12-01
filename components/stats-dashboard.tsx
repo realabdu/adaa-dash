@@ -143,7 +143,7 @@ const STAGES = {
       "أندونيسيا": { male: "107", female: "108" },
       "اليمن": { male: "109", female: "110" },
       "العراق": { male: "111", female: "112" },
-      "بنجلاديش": { male: "113", female: "114" },
+      "بنجلادي": { male: "113", female: "114" },
       "السودان": { male: "115", female: "116" },
       "الجزائر": { male: "117", female: "118" },
       "تركيا": { male: "119", female: "120" }
@@ -371,59 +371,61 @@ export function StatsDashboard() {
         ))}
       </div>
 
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-center mb-4">
         <button
           onClick={() => setShowDetailedStats(!showDetailedStats)}
-          className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary/90"
+          className="px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
         >
           {showDetailedStats ? 'إخفاء التفاصيل' : 'عرض التفاصيل'}
         </button>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-right">إحصائيات مفصلة</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="text-right">الجنسية</TableHead>
-                <TableHead className="text-right">عينة الذكور</TableHead>
-                <TableHead className="text-right">الذكور المكتملين</TableHead>
-                <TableHead className="text-right">عينة الإناث</TableHead>
-                <TableHead className="text-right">الإناث المكتملات</TableHead>
-                <TableHead className="text-right">نسبة الإنجاز</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {data.nationalities.map((nationality) => {
-                const stats = statsData?.nationalityStats[nationality]
-                return (
-                  <TableRow key={nationality}>
-                    <TableCell className="font-medium text-right">{nationality}</TableCell>
-                    {isLoading ? (
-                      Array(5).fill(0).map((_, i) => (
-                        <TableCell key={i} className="text-right opacity-50">...</TableCell>
-                      ))
-                    ) : (
-                      <>
-                        <TableCell className="text-right">{stats?.maleSample || 0}</TableCell>
-                        <TableCell className="text-right">{stats?.maleCompleted || 0}</TableCell>
-                        <TableCell className="text-right">{stats?.femaleSample || 0}</TableCell>
-                        <TableCell className="text-right">{stats?.femaleCompleted || 0}</TableCell>
-                        <TableCell className="text-right">
-                          {stats ? `${Math.round(stats.completionRate)}%` : '0%'}
-                        </TableCell>
-                      </>
-                    )}
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+      {showDetailedStats && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-right">إحصائيات مفصلة</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-right">الجنسية</TableHead>
+                  <TableHead className="text-right">عينة الذكور</TableHead>
+                  <TableHead className="text-right">الذكور المكتملين</TableHead>
+                  <TableHead className="text-right">عينة الإناث</TableHead>
+                  <TableHead className="text-right">الإناث المكتملات</TableHead>
+                  <TableHead className="text-right">نسبة الإنجاز</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {data.nationalities.map((nationality) => {
+                  const stats = statsData?.nationalityStats[nationality]
+                  return (
+                    <TableRow key={nationality}>
+                      <TableCell className="font-medium text-right">{nationality}</TableCell>
+                      {isLoading ? (
+                        Array(5).fill(0).map((_, i) => (
+                          <TableCell key={i} className="text-right opacity-50">...</TableCell>
+                        ))
+                      ) : (
+                        <>
+                          <TableCell className="text-right">{stats?.maleSample || 0}</TableCell>
+                          <TableCell className="text-right">{stats?.maleCompleted || 0}</TableCell>
+                          <TableCell className="text-right">{stats?.femaleSample || 0}</TableCell>
+                          <TableCell className="text-right">{stats?.femaleCompleted || 0}</TableCell>
+                          <TableCell className="text-right">
+                            {stats ? `${Math.round(stats.completionRate)}%` : '0%'}
+                          </TableCell>
+                        </>
+                      )}
+                    </TableRow>
+                  )
+                })}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      )}
     </div>
   )
 }
