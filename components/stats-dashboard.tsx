@@ -114,8 +114,8 @@ const STAGES = {
     id: "f3243c55-6f52-4550-85f4-268c46782418",
     default: "19afdfb9-a710-4d22-b2e4-1b02ee0c33bc",
     filters: {
-      "أوزبكستان": { male: "F6_1", female: "F6_2" },
-      "باكستان": { male: "101", female: "102" },
+      "أوزبكستان": { male: "69e1cfa0-2f6c-4368-bb70-0d2c5fc5f969", female: "8e1d198d-4a48-4bba-9658-7952cbab6149" },
+      "باكستان": { male: "c21b268c-872a-42d6-bf12-9c05d6e28303", female: "5194c92a-b6b0-4a4f-bd6b-5a53ebf600e5" },
       "مصر": { male: "103", female: "104" },
       "الهند": { male: "105", female: "106" },
       "أندونيسيا": { male: "107", female: "108" },
