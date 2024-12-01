@@ -17,6 +17,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { motion } from "framer-motion"
+import { Loader2 } from "lucide-react"
 
 // Add this helper function at the top of the file, after the interfaces
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -59,17 +61,27 @@ const STAGES = {
   },
   "مكة المكرمة - مرحلة التنقل والخدمات المساندة": {
     id: "c5ac2e9b-f44f-4d8c-a688-8e7f13b5dc58",
-    default: "0cea7cf2-4b0f-49cd-8851-825de1db14b0",
+    default: "38dea87e-0a36-4be6-9d6e-34cd9ea80844",
     filters: {
-      "أوزبكستان": { male: "0cea7cf2-4b0f-49cd-8851-825de1db14b0", female: "67872fdd-2fdb-4096-9cd8-0cbc658dfb22" }
+      "أوزبكستان": { male: "0cea7cf2-4b0f-49cd-8851-825de1db14b0", female: "67872fdd-2fdb-4096-9cd8-0cbc658dfb22" },
+      "باكستان": { male: "17b7ff5c-6f72-4aac-8849-813e9e1cda40", female: "a028a956-3104-46e2-85db-9806729a618f" },
+      "مصر": { male: "0abdc112-3120-4174-a56b-6903a5aa784d", female: "a4b6327b-2c0e-4428-838c-1036a87d4e90" },
+      "الهند": { male: "bb7b72ef-52c9-4b8e-875e-8844840695f3", female: "3e4d3adb-a76f-4de0-b24f-5c1516724346" },
+      "أندونيسيا": { male: "36b454f6-7b50-4ed7-a45c-1cbcacc38ca7", female: "5471979f-f4c4-480f-952c-1007b8a2e2e4" },
+      "اليمن": { male: "d18e68fc-4302-4b96-95d6-4b9879bc8eec", female: "8cb0160f-b268-40ab-b78e-6a3cab15b6f7" },
+      "العراق": { male: "46db9724-d88d-401c-982f-fa7c3b373126", female: "b6ba304a-02c1-49df-8873-0f9b0c506a98" },
+      "بنجلاديش": { male: "6e0d5e72-82cd-4078-9033-08c57fac4e7d", female: "f951c772-918d-4081-bae1-1dba7bdf2b8a" },
+      "السودان": { male: "a94c4cf9-4efc-4572-82ed-e9aa155f12f0", female: "3091c1d6-677f-4e7e-9f02-271b6fe6ab40" },
+      "الجزائر": { male: "8c831e6f-e48f-4fdb-ac8c-f8bba4fddb49", female: "9c91bc38-28c7-449a-ab9d-14891be76411" },
+      "تركيا": { male: "00be04e0-cc4f-4d35-b33d-f9da0f01fdb1", female: "b9f6a720-18f2-47d5-a939-39ce1dc9e991" }
     }
   },
   "المدينة المنورة - المغادرة": {
     id: "9aa0cb12-05f3-4f75-b205-383ac1be4b0a",
-    default: "F4_1",
+    default: "fa124aa4-39e5-44e5-9108-58a33e1021d8",
     filters: {
-      "أوزبكستان": { male: "F4_1", female: "F4_2" },
-      "باكستان": { male: "101", female: "102" },
+      "أوزبكستان": { male: "b5fe0fe1-ab77-4680-8b82-3a32f87096e0", female: "22d19da6-91c7-427b-bb11-32a218ba6db6" },
+      "باكستان": { male: "77e29a9d-2525-4a00-bd13-8e7a681e4e62", female: "7943981c-df8e-417d-afaa-d2097ff3c419" },
       "مصر": { male: "103", female: "104" },
       "الهند": { male: "105", female: "106" },
       "أندونيسيا": { male: "107", female: "108" },
@@ -83,7 +95,7 @@ const STAGES = {
   },
   "المدينة المنورة - السفر": {
     id: "4fcfb48c-7645-4d72-966e-2f676c3e4002",
-    default: "F5_1",
+    default: "93457af8-8c5c-45d5-af18-a189ca9821f6",
     filters: {
       "أوزبكستان": { male: "F5_1", female: "F5_2" },
       "باكستان": { male: "101", female: "102" },
@@ -100,7 +112,7 @@ const STAGES = {
   },
   "مكة المكرمة - التصاريح": {
     id: "f3243c55-6f52-4550-85f4-268c46782418",
-    default: "F6_1",
+    default: "19afdfb9-a710-4d22-b2e4-1b02ee0c33bc",
     filters: {
       "أوزبكستان": { male: "F6_1", female: "F6_2" },
       "باكستان": { male: "101", female: "102" },
@@ -117,7 +129,7 @@ const STAGES = {
   },
   "مكة المكرمة - المغادرة": {
     id: "b2d83218-b55b-4ab3-bf7f-7fb183cbe502",
-    default: "F7_1",
+    default: "fbf9f2a8-c547-4930-ba79-8b624869803d",
     filters: {
       "أوزبكستان": { male: "F7_1", female: "F7_2" },
       "باكستان": { male: "101", female: "102" },
@@ -132,9 +144,9 @@ const STAGES = {
       "تركيا": { male: "119", female: "120" }
     }
   },
-  "مكة المكرمة - أداء المناسك": {
+  "مكة المكرمة - السفر": {
     id: "761daa02-b819-4bbe-81f2-19c638e7f33a",
-    default: "F8_1",
+    default: "5cec0bde-85ec-4ed9-a565-420a4a536b7b",
     filters: {
       "أوزبكستان": { male: "F8_1", female: "F8_2" },
       "باكستان": { male: "101", female: "102" },
@@ -293,10 +305,10 @@ export function StatsDashboard() {
       setStatsData({
         nationalityStats,
         totals: {
-          totalSample: 96, // Adjust based on your requirements
+          totalSample: 1164, // Adjust based on your requirements
           totalCompleted: totalData.total || 0,
-          remaining: 96 - (totalData.total || 0),
-          completionRate: ((totalData.total || 0) / 96) * 100
+          remaining: 1164 - (totalData.total || 0),
+          completionRate: Number((((totalData.total || 0) / 1164) * 100).toFixed(2))
         }
       })
     } catch (error) {
@@ -310,9 +322,25 @@ export function StatsDashboard() {
     fetchStageData(selectedStage)
   }, [selectedStage, showDetailedStats])
 
+  // Add animation variants
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 }
+  }
+
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between pb-4 border-b">
+    <motion.div 
+      className="p-6 space-y-6"
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+    >
+      <motion.div 
+        className="flex items-center justify-between pb-4 border-b"
+        variants={fadeIn}
+        transition={{ delay: 0.2 }}
+      >
         <div className="flex items-center space-x-4">
           <div className="flex items-center gap-4">
             <img 
@@ -334,9 +362,13 @@ export function StatsDashboard() {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col sm:flex-row gap-4">
+      <motion.div 
+        className="flex flex-col sm:flex-row gap-4"
+        variants={fadeIn}
+        transition={{ delay: 0.3 }}
+      >
         <Select onValueChange={setSelectedStage} defaultValue={selectedStage}>
           <SelectTrigger className="w-full sm:w-[300px] text-right">
             <SelectValue placeholder="اختر المرحلة" />
@@ -349,84 +381,146 @@ export function StatsDashboard() {
             ))}
           </SelectContent>
         </Select>
-      </div>
+      </motion.div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <motion.div 
+        className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+        variants={fadeIn}
+        transition={{ delay: 0.4 }}
+      >
         {[
-          { title: "إجمالي العينة", value: statsData?.totals.totalSample || 0 },
-          { title: "مكتمل", value: statsData?.totals.totalCompleted || 0, color: "text-green-600" },
-          { title: "متبقي", value: statsData?.totals.remaining || 0, color: "text-yellow-600" },
-          { title: "نسبة الإنجاز", value: `${statsData?.totals.completionRate || 0}%`, color: "text-blue-600" }
-        ].map((item) => (
-          <Card key={item.title}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-right w-full">{item.title}</CardTitle>
+          { 
+            title: "إجمالي العينة",
+            value: statsData?.totals.totalSample || 0,
+            icon: "📊"
+          },
+          { 
+            title: "مكتمل",
+            value: statsData?.totals.totalCompleted || 0,
+            color: "text-green-600",
+            icon: "✅"
+          },
+          { 
+            title: "متبقي",
+            value: statsData?.totals.remaining || 0,
+            color: "text-yellow-600",
+            icon: "⏳"
+          },
+          { 
+            title: "نسبة الإنجاز",
+            value: `${statsData?.totals.completionRate || 0}%`,
+            color: "text-blue-600",
+            icon: "📈"
+          }
+        ].map((item, index) => (
+          <motion.div
+            key={item.title}
+            variants={fadeIn}
+            transition={{ delay: 0.4 + index * 0.1 }}
+          >
+            <Card className="hover:shadow-lg transition-shadow duration-300">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium text-right w-full flex items-center justify-between">
+                  {item.title}
+                  <span className="text-xl">{item.icon}</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-right">
+                <div className={`text-2xl font-bold ${item.color || ''}`}>
+                  {isLoading ? (
+                    <Loader2 className="h-6 w-6 animate-spin mx-auto" />
+                  ) : (
+                    <motion.span
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ type: "spring", duration: 0.5 }}
+                    >
+                      {item.value}
+                    </motion.span>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      <motion.div 
+        className="flex justify-center mb-4"
+        variants={fadeIn}
+        transition={{ delay: 0.6 }}
+      >
+        <button
+          onClick={() => setShowDetailedStats(!showDetailedStats)}
+          className="px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2"
+        >
+          {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
+          {showDetailedStats ? '⬆️ إخفاء التفاصيل' : '⬇️ عرض التفاصيل'}
+        </button>
+      </motion.div>
+
+      {showDetailedStats && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Card className="overflow-hidden">
+            <CardHeader>
+              <CardTitle className="text-right">إحصائيات مفصلة</CardTitle>
             </CardHeader>
-            <CardContent className="text-right">
-              <div className={`text-2xl font-bold ${item.color || ''} ${isLoading ? 'opacity-50' : ''}`}>
-                {isLoading ? '...' : item.value}
+            <CardContent>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="text-right">الجنسية</TableHead>
+                      <TableHead className="text-right">عينة الذكور</TableHead>
+                      <TableHead className="text-right">الذكور المكتملين</TableHead>
+                      <TableHead className="text-right">عينة الإناث</TableHead>
+                      <TableHead className="text-right">الإناث المكتملات</TableHead>
+                      <TableHead className="text-right">نسبة الإنجاز</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {data.nationalities.map((nationality, index) => {
+                      const stats = statsData?.nationalityStats[nationality]
+                      return (
+                        <motion.tr
+                          key={nationality}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          className="hover:bg-gray-50 transition-colors"
+                        >
+                          <TableCell className="font-medium text-right">{nationality}</TableCell>
+                          {isLoading ? (
+                            Array(5).fill(0).map((_, i) => (
+                              <TableCell key={i} className="text-right opacity-50">...</TableCell>
+                            ))
+                          ) : (
+                            <>
+                              <TableCell className="text-right">{stats?.maleSample || 0}</TableCell>
+                              <TableCell className="text-right">{stats?.maleCompleted || 0}</TableCell>
+                              <TableCell className="text-right">{stats?.femaleSample || 0}</TableCell>
+                              <TableCell className="text-right">{stats?.femaleCompleted || 0}</TableCell>
+                              <TableCell className="text-right">
+                                {stats ? `${Math.round(stats.completionRate)}%` : '0%'}
+                              </TableCell>
+                            </>
+                          )}
+                        </motion.tr>
+                      )
+                    })}
+                  </TableBody>
+                </Table>
               </div>
             </CardContent>
           </Card>
-        ))}
-      </div>
-
-      <div className="flex justify-center mb-4">
-        <button
-          onClick={() => setShowDetailedStats(!showDetailedStats)}
-          className="px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-        >
-          {showDetailedStats ? 'إخفاء التفاصيل' : 'عرض التفاصيل'}
-        </button>
-      </div>
-
-      {showDetailedStats && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-right">إحصائيات مفصلة</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="text-right">الجنسية</TableHead>
-                  <TableHead className="text-right">عينة الذكور</TableHead>
-                  <TableHead className="text-right">الذكور المكتملين</TableHead>
-                  <TableHead className="text-right">عينة الإناث</TableHead>
-                  <TableHead className="text-right">الإناث المكتملات</TableHead>
-                  <TableHead className="text-right">نسبة الإنجاز</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {data.nationalities.map((nationality) => {
-                  const stats = statsData?.nationalityStats[nationality]
-                  return (
-                    <TableRow key={nationality}>
-                      <TableCell className="font-medium text-right">{nationality}</TableCell>
-                      {isLoading ? (
-                        Array(5).fill(0).map((_, i) => (
-                          <TableCell key={i} className="text-right opacity-50">...</TableCell>
-                        ))
-                      ) : (
-                        <>
-                          <TableCell className="text-right">{stats?.maleSample || 0}</TableCell>
-                          <TableCell className="text-right">{stats?.maleCompleted || 0}</TableCell>
-                          <TableCell className="text-right">{stats?.femaleSample || 0}</TableCell>
-                          <TableCell className="text-right">{stats?.femaleCompleted || 0}</TableCell>
-                          <TableCell className="text-right">
-                            {stats ? `${Math.round(stats.completionRate)}%` : '0%'}
-                          </TableCell>
-                        </>
-                      )}
-                    </TableRow>
-                  )
-                })}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   )
 }
 

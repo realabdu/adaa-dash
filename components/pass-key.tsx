@@ -14,7 +14,7 @@ export function PassKeyAuth({ onAuth }: { onAuth: (isAuth: boolean) => void }) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    if (passKey === "demo123") {
+    if (passKey === "adaa2024") {
       try {
         const response = await fetch('https://api.xebo.ai/api/v1/login', {
           method: 'POST',
@@ -53,8 +53,24 @@ export function PassKeyAuth({ onAuth }: { onAuth: (isAuth: boolean) => void }) {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>الوصول إلى لوحة المعلومات</CardTitle>
-          <CardDescription>أدخل كلمة المرور لعرض لوحة الإحصائيات</CardDescription>
+          <div className="flex flex-col items-center space-y-6 mb-6">
+            <div className="flex items-center gap-4">
+              <img 
+                src="https://sadacx.vercel.app/image/logo/sada.webp"
+                alt="Sada Logo" 
+                className="h-7 w-auto"
+              />
+              <span className="text-xl font-bold text-muted-foreground">×</span>
+              <img 
+                src="https://www.adaa.gov.sa/wp-content/uploads/2022/12/ADAA-Logo-English-Original-colors-01-1-e1672645487668.png"
+                alt="Partner Logo" 
+                className="h-10 w-auto"
+              />
+            </div>
+            <h1 className="text-2xl font-bold text-center">٢٠٢٤ تحليل رضا الزوار للعمرة الغير موسمية </h1>
+          </div>
+          
+          <CardDescription className="text-center">أدخل كلمة المرور لعرض لوحة الإحصائيات</CardDescription>
         </CardHeader>
         <CardContent className="text-right">
           <form onSubmit={handleSubmit} className="space-y-4">
