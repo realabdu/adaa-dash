@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardDescription } from "@/components/ui/card"
 
 export function PassKeyAuth({ onAuth }: { onAuth: (isAuth: boolean) => void }) {
   const [passKey, setPassKey] = useState("")
