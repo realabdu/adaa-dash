@@ -23,6 +23,13 @@ import { Loader2 } from "lucide-react"
 // Add this helper function at the top of the file, after the interfaces
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
+// Add this helper function near the top of the file
+const getCompletionColor = (rate: number) => {
+  if (rate >= 100) return "text-green-600"
+  if (rate >= 90) return "text-yellow-600"  // You can adjust this threshold
+  return "text-red-600"
+}
+
 // Restructured STAGES data to map filters to nationalities and genders
 const STAGES = {
   "المدينة المنورة  - التصاريح": {
@@ -505,7 +512,7 @@ export function StatsDashboard() {
                               <TableCell className="text-right">{stats?.maleCompleted || 0}</TableCell>
                               <TableCell className="text-right">{stats?.femaleSample || 0}</TableCell>
                               <TableCell className="text-right">{stats?.femaleCompleted || 0}</TableCell>
-                              <TableCell className="text-right">
+                              <TableCell className={`text-right font-medium ${getCompletionColor(stats?.completionRate || 0)}`}>
                                 {stats ? `${Math.round(stats.completionRate)}%` : '0%'}
                               </TableCell>
                             </>
