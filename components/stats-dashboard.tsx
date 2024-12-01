@@ -337,12 +337,12 @@ export function StatsDashboard() {
       variants={fadeIn}
     >
       <motion.div 
-        className="flex items-center justify-between pb-4 border-b"
+        className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between pb-4 border-b"
         variants={fadeIn}
         transition={{ delay: 0.2 }}
       >
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col items-center sm:flex-row sm:items-center sm:space-x-4">
+          <div className="flex items-center gap-4 mb-3 sm:mb-0">
             <img 
               src="https://sadacx.vercel.app/image/logo/sada.webp"
               alt="Sada Logo" 
@@ -355,7 +355,7 @@ export function StatsDashboard() {
               className="h-10 w-auto"
             />
           </div>
-          <div>
+          <div className="text-center sm:text-right">
             <h1 className="text-2xl font-bold tracking-tight">لوحة المعلومات</h1>
             <p className="text-sm text-muted-foreground">
               إحصائيات وتحليلات المسح
