@@ -227,7 +227,7 @@ export function StatsDashboard() {
       
       const totalData = await totalResponse.json()
       
-      let nationalityStats: Record<string, NationalityStats> = {}
+      const nationalityStats: Record<string, NationalityStats> = {}
       
       // If detailed view is requested, fetch individual nationality data
       if (showDetailedStats) {
