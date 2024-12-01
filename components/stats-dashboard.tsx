@@ -378,7 +378,7 @@ export function StatsDashboard() {
       >
         <Select onValueChange={setSelectedStage} defaultValue={selectedStage}>
           <SelectTrigger className="w-full sm:w-[300px] text-right">
-            <SelectValue placeholder="اختر المرحلة" />
+            <SelectValue placeholder="اختر الرحلة" />
           </SelectTrigger>
           <SelectContent>
             {data.stages.map((stage) => (
@@ -487,12 +487,14 @@ export function StatsDashboard() {
                       <TableHead className="text-right">الذكور المكتملين</TableHead>
                       <TableHead className="text-right">عينة الإناث</TableHead>
                       <TableHead className="text-right">الإناث المكتملات</TableHead>
+                      <TableHead className="text-right">إجمالي المكتمل</TableHead>
                       <TableHead className="text-right">نسبة الإنجاز</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {data.nationalities.map((nationality, index) => {
                       const stats = statsData?.nationalityStats[nationality]
+                      const totalCompleted = (stats?.maleCompleted || 0) + (stats?.femaleCompleted || 0)
                       return (
                         <motion.tr
                           key={nationality}
@@ -503,7 +505,7 @@ export function StatsDashboard() {
                         >
                           <TableCell className="font-medium text-right">{nationality}</TableCell>
                           {isLoading ? (
-                            Array(5).fill(0).map((_, i) => (
+                            Array(6).fill(0).map((_, i) => (
                               <TableCell key={i} className="text-right opacity-50">...</TableCell>
                             ))
                           ) : (
@@ -512,6 +514,9 @@ export function StatsDashboard() {
                               <TableCell className="text-right">{stats?.maleCompleted || 0}</TableCell>
                               <TableCell className="text-right">{stats?.femaleSample || 0}</TableCell>
                               <TableCell className="text-right">{stats?.femaleCompleted || 0}</TableCell>
+                              <TableCell className={`text-right font-medium ${getCompletionColor(stats?.completionRate || 0)}`}>
+                                {totalCompleted}
+                              </TableCell>
                               <TableCell className={`text-right font-medium ${getCompletionColor(stats?.completionRate || 0)}`}>
                                 {stats ? `${Math.round(stats.completionRate)}%` : '0%'}
                               </TableCell>
