@@ -482,13 +482,13 @@ export function StatsDashboard() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="text-right">الجنسية</TableHead>
-                      <TableHead className="text-right">عينة الذكور</TableHead>
-                      <TableHead className="text-right">الذكور المكتملين</TableHead>
-                      <TableHead className="text-right">عينة الإناث</TableHead>
-                      <TableHead className="text-right">الإناث المكتملات</TableHead>
-                      <TableHead className="text-right">إجمالي المكتمل</TableHead>
                       <TableHead className="text-right">نسبة الإنجاز</TableHead>
+                      <TableHead className="text-right">إجمالي المكتمل</TableHead>
+                      <TableHead className="text-right">الإناث المكتملات</TableHead>
+                      <TableHead className="text-right">عينة الإناث</TableHead>
+                      <TableHead className="text-right">الذكور المكتملين</TableHead>
+                      <TableHead className="text-right">عينة الذكور</TableHead>
+                      <TableHead className="text-right">الجنسية</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
